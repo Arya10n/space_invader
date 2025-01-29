@@ -1,0 +1,14 @@
+# Build files
+/build/
+*.o
+*.exe
+*.out
+*.sh
+# OS generated files
+.DS_Store
+Thumbs.db
+# IDE files
+.vscode/
+.idea/
+#executable
+test_game

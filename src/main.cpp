@@ -1,5 +1,5 @@
 #include <raylib.h>
-#include "spaceship.hpp"
+#include "game.hpp"
 
 int main() {
   Color grey = {29, 29, 27, 255};
@@ -9,13 +9,17 @@ int main() {
   InitWindow(windowWidth, windowHeight, "C++ Space Invaders");
   SetTargetFPS(60);
 
-  Spaceship spaceship;
+  Game game;
 
   while(WindowShouldClose() == false) {
 
+    game.HandleInput();
+
     BeginDrawing();
+
+    game.Update();
     ClearBackground(grey);
-    spaceship.Draw();
+    game.Draw();
 
     EndDrawing();
 
