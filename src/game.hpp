@@ -15,6 +15,7 @@ class Game {
     std::vector<Obstacle> CreateObstacles();
     std::vector<Alien> CreateAliens();
     void MoveAliens();
+    void MoveDownAliens(int distance);
     Spaceship spaceship;
     std::vector<Obstacle> obstacles;
     std::vector<Alien> aliens;
