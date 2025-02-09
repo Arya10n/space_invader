@@ -40,6 +40,8 @@ void Game::Update() {
   DeleteInactiveLasers();
 
   mysteryship.Update();
+
+  CheckForCollisions();
 }
 
 void Game::Draw() {
@@ -164,5 +166,23 @@ void Game::AlienShootLaser()
     Alien& alien = aliens[randomIndex];
     alienLasers.push_back(Laser({alien.position.x + alien.alienImages[alien.type - 1].width/2, alien.position.y + alien.alienImages[alien.type - 1].height}, 6));
     timeLastAlienFire = currenTime;
+  }
+}
+
+void Game::CheckForCollisions()
+{
+  //Spaceship Lasers
+
+  for(auto& laser: spaceship.lasers) {
+    auto it = aliens.begin();
+    while(it != aliens.end()) {
+      if(CheckCollisionRecs(it-> GetRect(), laser.GetRect())) {
+        it = aliens.erase(it);
+        laser.active = false;
+      }
+      else {
+        ++it;
+      }
+    }
   }
 }
